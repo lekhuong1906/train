@@ -1,4 +1,4 @@
 @extends('pages.layout')
 @section('content')
-    456
+    123
 @endsection
