@@ -1,0 +1,190 @@
+body {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #222;
+  background: #f8f8f8;
+  font-weight: 400;
+  font-family: Poppins;
+}
+
+section {
+  margin: 50px;
+}
+
+label {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  color: #222;
+}
+
+i{
+  color: #22b3c1;
+}
+
+input {
+  width: 100%;
+  display: block;
+  border: none;
+  border-bottom: 1px solid #999;
+  padding: 6px 30px;
+  font-family: Poppins;
+  box-sizing: border-box;
+}
+
+input, select {
+  outline: none;
+}
+
+input[type=checkbox]:not(old) {
+  width: 1em;
+  margin-right: 4px;
+  padding: 0;
+  font-size: 1em;
+}
+
+
+h2 {
+  line-height: 1.66;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  color: #22b3c1;
+  font-family: Poppins;
+  font-size: 36px;
+}
+
+figure {
+  margin-bottom: 50px;
+  text-align: center;
+  margin: 0;
+}
+
+.container {
+    width: 600px;
+    background: #fff;
+    margin: 0 auto;
+    box-shadow: 0 15px 16.83px 0.17px rgba(0,0,0,.05);
+    border-radius: 20px;
+}
+
+.signin-content {
+  display: flex;
+  justify-content: center;
+  padding-top: 67px;
+  padding-bottom: 87px;
+}
+
+.signin-image {
+  margin-left: 110px;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.signup-image-link {
+  font-size: 14px;
+  color: #222;
+  display: block;
+  float: right;
+}
+
+.signup-image-link:hover {
+  color: #22b3c1;
+}
+
+
+.register-form {
+  width: 100%;
+}
+
+.signin-form {
+  width: 336px;
+  margin-right: 90px;
+  margin-left: 80px;
+}
+
+.form-title {
+  margin-bottom: 33px;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 25px;
+  overflow: hidden;
+  display: flex;
+}
+.form-group:nth-child(3){
+  display: flex;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.label-agree-term {
+  position: relative;
+  top: 0%;
+  transform: translateY(0);
+}
+
+#signin {
+  margin-top: 16px;
+}
+.form-submit {
+  display: inline-block;
+  background: #22b3c1;
+  color: #fff;
+  border-bottom: none;
+  width: auto;
+  padding: 15px 39px;
+  border-radius: 5px;
+  margin-top: 25px;
+  cursor: pointer;
+}
+
+.social-login {
+  align-items: center;
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-label {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.socials {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.socials li {
+  padding: 5px;
+  display: block;
+  
+}
+
+.socials li a{
+  padding: 5px;
+  display: block;
+  text-decoration: none;
+}
+
+.socials li a i {
+  display: block;
+  width: 30px;
+  font-size: 24px;
+  border-radius: 5px;
+  transition-duration: .3s;
+  transition-property: transform;
+  transition-timing-function: ease-out;
+}
