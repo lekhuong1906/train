@@ -36,7 +36,7 @@
                                 <label for="receipt_total" class="col-sm col-form-label">Receipt Total</label>
                                 <div class="col-sm">
                                     <input type="text" onsubmit="" readonly class="form-control-plaintext"
-                                           name="receipt_total"  value="{{number_format($type_ticket->type_price)}}">
+                                           name="receipt_total"  value="{{$type_ticket->type_price}}">
                                 </div>
                             </div>
                             <hr/>

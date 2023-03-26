@@ -16,7 +16,7 @@ class Receipt extends Model
         'receipt_total',
     ];
     public function type_ticket(){
-        return $this->belongsTo(TypeTicket::class,'type_ticket_id','id');
+        return $this->belongsTo(TypeTicket::class,'type_ticket_id');
     }
     public function user(){
         return $this->belongsTo(User::class,'user_id','id');

@@ -5,49 +5,35 @@
             <div class="signin-content">
                 <div class="signin-form">
                     <h2 class="form-title">Sign up</h2>
-                    <form method="get" class="register-form" action="{{url('/')}}" id="login-form">
+                    <form method="post" class="register-form" action="{{url('/save-account')}}" id="login-form">
+                        @csrf
                         <div class="form-group">
-                            <label for="your_name"><i class="fa-solid fa-user"></i></label>
-                            <input type="text" name="your_name" id="your_name" placeholder="Your Name"
+                            <label for="name"><i class="fa-solid fa-user"></i></label>
+                            <input type="text" name="name" placeholder="Your Name"
                                    fdprocessedid="qablcn">
                         </div>
                         <div class="form-group">
-                            <label for="your_name"><i class="fa-solid fa-phone"></i></label>
-                            <input type="text" name="your_name" id="your_name" placeholder="Phone"
-                                   fdprocessedid="qablcn">
-                        </div>
-                        <div class="form-group">
-                            <label for="your_name"><i class="fa-solid fa-id-card"></i></label>
-                            <input type="text" name="your_name" id="your_name" placeholder="Identity Card"
-                                   fdprocessedid="qablcn">
-                        </div>
-                        <div class="form-group">
-                            <label for="your_pass"><i class="fa-solid fa-envelope"></i></label>
-                            <input type="password" name="your_pass" id="your_pass" placeholder="Email"
+                            <label for="email"><i class="fa-solid fa-envelope"></i></label>
+                            <input type="email" name="email" placeholder="Email"
                                    fdprocessedid="c3x7dn">
                         </div>
                         <div class="form-group">
-                            <label for="your_pass"><i class="fa-solid fa-lock"></i></label>
-                            <input type="password" name="your_pass" id="your_pass" placeholder="Password"
+                            <label for="password"><i class="fa-solid fa-lock"></i></label>
+                            <input type="password" name="password" placeholder="Password"
                                    fdprocessedid="c3x7dn">
                         </div>
                         <div class="form-group">
-                            <label for="your_pass"><i class="fa-solid fa-lock"></i></label>
-                            <input type="password" name="your_pass" id="your_pass" placeholder="Confirm Password"
+                            <label for="password"><i class="fa-solid fa-lock"></i></label>
+                            <input type="password" name="password" placeholder="Confirm Password"
                                    fdprocessedid="c3x7dn">
                         </div>
-                        <div class="form-group">
-                            <input type="checkbox" name="remember-me" id="remember-me" class="agree-term">
-                            <label for="remember-me" class="label-agree-term"><span><span></span></span>I agree all
-                                statements in Terms of service</label>
-                        </div>
+
+
                         <div class="form-group form-button">
-                            <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"
+                            <input type="submit" name="signin" id="signin" class="form-submit" value="Sign up"
                                     fdprocessedid="6de318">
                         </div>
                     </form>
-                    <a href="#" class="signup-image-link">I already a member</a>
-
                 </div>
             </div>
         </div>

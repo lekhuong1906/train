@@ -15,7 +15,7 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('type_tickets', function (Blueprint $table) {
             $table->id();
-            $table->string('receipt_id');
+            $table->string('payment_id');
             $table->string('ticket_code');
             $table->string('day_start');
             $table->string('day_end');

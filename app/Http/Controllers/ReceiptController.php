@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Receipt;
+use App\Models\TicKet;
 use App\Models\TypeTicket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

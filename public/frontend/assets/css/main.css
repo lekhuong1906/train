@@ -170,7 +170,7 @@ figure {
 .socials li {
   padding: 5px;
   display: block;
-  
+
 }
 
 .socials li a{
@@ -187,4 +187,8 @@ figure {
   transition-duration: .3s;
   transition-property: transform;
   transition-timing-function: ease-out;
+}
+.filter {
+    padding: 30px;
+    margin-bottom: 30px;
 }

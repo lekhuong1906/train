@@ -42,4 +42,11 @@ class HomeController extends Controller
     public function sign_up(){
         return view('pages.login.sign_up');
     }
+    public function save_account(Request $request){
+        $new_account = new User();
+        $new_account->fill($request->all());
+        $new_account['level_account']=0;
+//        $new_account->save();
+        return redirect('/login');
+    }
 }

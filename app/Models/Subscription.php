@@ -18,6 +18,6 @@ class Subscription extends Model
         'stripe_status',
     ];
     public function receipt(){
-        return $this->hasOne(Receipt::class,'receipt_id');
+        return $this->belongsTo(\App\Models\Receipt::class,'receipt_id');
     }
 }

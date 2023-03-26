@@ -14,7 +14,17 @@
                         <ul class="nav">
                             <li><a href="{{url('/')}}" class="active">Home</a></li>
                             <li><a href="#">Map</a></li>
-                            <li><a href="#">Profile</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Profile
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#">My Profile</a>
+                                    <a class="dropdown-item" href="#">Settings</a>
+                                    <a class="dropdown-item" href="#">Log out</a>
+                                </div>
+                            </li>
+
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
