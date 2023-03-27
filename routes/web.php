@@ -61,6 +61,7 @@ Route::group(['middleware'=>['customer-login']],function (){
 });
 
 Route::get('/all-ticket',[TicketController::class,'all_ticket']);
+Route::get('/qrcode/{ticket_code}',[TicketController::class,'qrcode']);
 
 Route::get('/profiles',function (){
     return view('pages.account.profile');

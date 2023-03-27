@@ -13,9 +13,9 @@ class TicketController extends Controller
         $all_ticket = TicKet::all();
         return view('pages.account.all_ticket')->with('all_ticket',$all_ticket);
     }
-    public function ticket_qrcode($id){
-        $ticket = TicKet::where('id',$id)->first();
-        $qrcode = QrCode::size(250)->generate($ticket->ticket_code);
-        return view('pages.account.ticket_detail')->with('qrcode',$qrcode);
+    public function qrcode($ticket_code){
+        $ticket = TicKet::where('ticket_code',$ticket_code)->first();
+        $qrcode = QrCode::generate($ticket->ticket_code);
+        return $qrcode;
     }
 }
