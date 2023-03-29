@@ -18,6 +18,15 @@
     <link href="{{asset('public/backend/assets/css/paper-dashboard.css?v=2.0.1')}}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{asset('public/backend/assets/demo/demo.css')}}" rel="stylesheet" />
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!--  Toastr  -->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
 </head>
 
 <body class="">
@@ -26,6 +35,11 @@
     <div class="main-panel">
         @include('admin.dashboard.navbar')
         <div class="content">
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div>{{$error}}</div>
+                @endforeach
+            @endif
             @yield('content')
         </div>
         @include('admin.dashboard.footer')
@@ -52,27 +66,8 @@
         demo.initChartsPages();
     });
 </script>
-<!-- side bar -->
-<script type="text/javascript">
-    $(document).ready(function(){
-        //jquery for toggle sub menus
-        $('.sub-btn').click(function(){
-            $(this).next('.sub-menu').slideToggle();
-            $(this).find('.dropdown').toggleClass('rotate');
-        });
+@include('session_notify.get_notify')
 
-        //jquery for expand and collapse the sidebar
-        $('.menu-btn').click(function(){
-            $('.side-bar').addClass('active');
-            $('.menu-btn').css("visibility", "hidden");
-        });
-
-        $('.close-btn').click(function(){
-            $('.side-bar').removeClass('active');
-            $('.menu-btn').css("visibility", "visible");
-        });
-    });
-</script>
 </body>
 
 </html>

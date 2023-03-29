@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Cashier\Cashier;
 use Illuminate\Support\Facades\Redirect;
+use RealRashid\SweetAlert\Facades\Alert;
 use MongoDB\Driver\Session;
 
 class ReceiptController extends Controller
@@ -32,9 +33,10 @@ class ReceiptController extends Controller
     public function save_receipt(Request $request){
         $new_receipt = new Receipt();
         $new_receipt->fill($request->all());
-        $new_receipt->save();
+//        $new_receipt->save();
         $receipt_id = Receipt::latest('id')->first()->id;
         $request->session()->put(['receipt_id'=>$receipt_id]);
+        alert()->success('Title','Lorem Lorem Lore');
 
         return Redirect::to('/check-out/'.$receipt_id);
     }

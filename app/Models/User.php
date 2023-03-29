@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'identity_card',
+        'phone',
+        'address',
         'level_account',
     ];
     protected $hidden = [
@@ -34,7 +37,7 @@ class User extends Authenticatable
 
     public function setPasswordAttribute($password)
     {
-        $this->attributes['password'] = bcrypt($password);
+        $this->attributes['password'] = md5($password);
     }
 
     public function receipt(){

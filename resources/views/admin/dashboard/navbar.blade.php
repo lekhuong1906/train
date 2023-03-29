@@ -51,8 +51,8 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn-rotate" href="javascript:;">
-                            <i class="nc-icon nc-settings-gear-65"></i>
+                        <a class="nav-link btn-rotate" href="{{url('/log-out')}}">
+                            <i class="nc-icon nc-button-power"></i>
                             <p>
                                 <span class="d-lg-none d-md-block">Account</span>
                             </p>

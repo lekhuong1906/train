@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserFormRequest;
 use App\Models\TypeTicket;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -21,16 +23,7 @@ class HomeController extends Controller
         return view('pages.login.sign_in');
     }
     public function sign_in(Request $request){
-        /*$credential = [
-            'email'=>$request->email,
-            'password'=>md5($request->password),
-            'level_account'=>1
-        ];
-        if (Auth::attempt($credential)){
-            $request->session()->regenerate();
-            return redirect()->intended('/');
-        }*/
-        $customer = User::where('email',$request->email)->where('password',md5($request->password))->where('level_account',1)->first();
+        $customer = User::where('email',$request->email)->where('password',md5($request->password))->where('level_account',0)->first();
         if ($customer !== null){
             Auth::login($customer);
             return redirect()->intended('/');
@@ -42,11 +35,15 @@ class HomeController extends Controller
     public function sign_up(){
         return view('pages.login.sign_up');
     }
-    public function save_account(Request $request){
+    public function save_account(UserFormRequest $request){
         $new_account = new User();
         $new_account->fill($request->all());
         $new_account['level_account']=0;
-//        $new_account->save();
+        $new_account->save();
         return redirect('/login');
+    }
+    public function log_out(){
+        Auth::logout();
+        return Redirect::to('/');
     }
 }

@@ -175,6 +175,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Brian2694\Toastr\ToastrServiceProvider::class,
+
 
     ],
 
@@ -231,6 +233,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'QrCode'=>SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+        'Toastr' => Brian2694\Toastr\Facades\Toastr::class,
+
     ],
 
 ];

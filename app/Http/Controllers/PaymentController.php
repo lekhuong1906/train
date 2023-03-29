@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Receipt;
 use App\Models\Subscription;
 use App\Models\TicKet;
+use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +28,7 @@ class PaymentController extends Controller
     {
         Stripe::setApiKey('sk_test_51Ll5TpHPOVRsN3XUqNRhVP4TXg6uhjMVLQ88AbyLajW4HLiUp80AUEM1eimlyU5BXJtOQOip9U10vFGI8OplzR3H00vBwfAlYk');
 
-        $receipt_id = $request->session()->pull('receipt_id');
+        $receipt_id = $request->session()->get('receipt_id');
         $amount = Receipt::where('id',$receipt_id)->first()->receipt_total;
 
         try {
@@ -47,11 +48,11 @@ class PaymentController extends Controller
             ]);
 
             if (!empty($charge) && $charge['status'] == 'succeeded') {
-                $request->session()->flash('success', 'Payment completed.');
+                Toastr::success('success', 'Payment completed.');
                 $this->subcription($charge,$receipt_id);
-                $this->create_ticket(Subscription::first()->id);
+                $this->create_ticket(Subscription::orderby('id','desc')->first()->id);
             } else {
-                $request->session()->flash('danger', 'Payment failed.');
+                Toastr::error('danger', 'Payment failed.');
             }
 
         } catch (CardException $e) {

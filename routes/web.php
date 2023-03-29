@@ -21,22 +21,31 @@ use App\Http\Controllers\TicketController;
 |
 */
 
+Route::get('/admin-login',[AdminController::class,'admin_login'])->name('admin-login');
+Route::post('/admin-sign-in',[AdminController::class,'sign_in']);
 
-Route::get('/dashboard',[AdminController::class,'dashboard']);
+Route::group(['middleware'=>['auth']],function (){
 
-//type_ticket
-Route::get('/add-type-ticket',[TypeTicketController::class,'add_type_ticket']);
-Route::get('/all-type-ticket',[TypeTicketController::class, 'all_type_ticket']);
-Route::get('/edit-type-ticket/{id}',[TypeTicketController::class, 'edit_type_ticket']);
-Route::post('/save-type-ticket',[TypeTicketController::class, 'save_type_ticket']);
-Route::post('/update-type-ticket/{id}',[TypeTicketController::class, 'update_type_ticket']);
+    Route::get('/dashboard',[AdminController::class,'dashboard']);
 
-//receipt
-Route::get('/all-receipt',[ReceiptController::class,'all_receipt']);
-Route::get('/receipt-detail/{id}',[ReceiptController::class,'receipt_detail']);
-Route::get('/maps',[MapController::class,'maps']);
+    //type_ticket
+    Route::get('/add-type-ticket',[TypeTicketController::class,'add_type_ticket']);
+    Route::get('/all-type-ticket',[TypeTicketController::class, 'all_type_ticket']);
+    Route::get('/edit-type-ticket/{id}',[TypeTicketController::class, 'edit_type_ticket']);
+    Route::post('/save-type-ticket',[TypeTicketController::class, 'save_type_ticket']);
+    Route::post('/update-type-ticket/{id}',[TypeTicketController::class, 'update_type_ticket']);
 
-Route::get('/profile',[UserController::class,'profile']);
+    //receipt
+    Route::get('/all-receipt',[ReceiptController::class,'all_receipt']);
+    Route::get('/receipt-detail/{id}',[ReceiptController::class,'receipt_detail']);
+    Route::get('/maps',[MapController::class,'maps']);
+
+    Route::get('/profile',[UserController::class,'profile']);
+
+    //logout
+    Route::get('log-out',[AdminController::class,'log_out']);
+});
+
 
 
 
@@ -57,6 +66,9 @@ Route::group(['middleware'=>['customer-login']],function (){
     Route::post('/save-receipt',[ReceiptController::class,'save_receipt']);
     Route::get('/check-out/{id}',[PaymentController::class,'checkout']);
     Route::post('/payment',[PaymentController::class,'payment']);
+
+    //log out
+    Route::get('/customer-log-out',[HomeController::class,'log_out']);
 
 });
 

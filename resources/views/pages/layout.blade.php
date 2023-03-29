@@ -24,10 +24,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-..."></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--Notify with Sweetaler -->
+    <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
+
 
     <!--  Toastr  -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
     <!--
     -->
@@ -35,16 +40,16 @@
 
 <body>
 
+@include('sweetalert::alert')
 
 @include('pages.homes.header')
-@include('pages.session.get_session')
 @yield('content')
 @include('pages.homes.footer')
 
 
 <!-- Scripts -->
 <!-- Bootstrap core JavaScript -->
-<script src="{{asset('public/frontend/vendor/jquery/jquery.min.js"')}}></script>
+<script src="{{asset('public/frontend/vendor/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('public/frontend/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
 
 <script src="{{asset('public/frontend/assets/js/isotope.min.js')}}"></script>
@@ -60,6 +65,7 @@
         $(this).addClass("active");
     });
 </script>
+@include('session_notify.get_notify')
 </body>
 
 </html>

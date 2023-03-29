@@ -21,7 +21,7 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="#">My Profile</a>
                                     <a class="dropdown-item" href="#">Settings</a>
-                                    <a class="dropdown-item" href="#">Log out</a>
+                                    <a class="dropdown-item" href="{{url('/customer-log-out')}}">Log out</a>
                                 </div>
                             </li>
 
@@ -36,4 +36,16 @@
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
+    <script>
+        $(document).ready(function() {
+            $(".nav-item.dropdown").hover(function() {
+                $(this).addClass('show');
+                $('.dropdown-menu', this).addClass('show');
+            }, function() {
+                $(this).removeClass('show');
+                $('.dropdown-menu', this).removeClass('show');
+            });
+        });
+
+    </script>
 </section>

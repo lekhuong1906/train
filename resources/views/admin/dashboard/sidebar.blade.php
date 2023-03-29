@@ -4,7 +4,7 @@
     </style>
     <div class="sidebar" data-color="white" data-active-color="danger">
         <div class="logo">
-            <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+            <a href="#" class="simple-text logo-mini">
                 <div class="logo-image-small">
                     <img src="{{asset('public/backend/assets/img/logo-small.png')}}">
                 </div>
@@ -53,4 +53,15 @@
             </ul>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $(".sub-menu").hide(); // ẩn submenu mặc định
+
+            $(".sub-btn").click(function() {
+                $(this).next(".sub-menu").slideToggle(); // hiển thị submenu khi nhấp vào icon
+                $(this).find(".dropdown").toggleClass("nc-minimal-up"); // chuyển biểu tượng dropdown lên khi submenu được hiển thị
+            });
+        });
+    </script>
 </section>
