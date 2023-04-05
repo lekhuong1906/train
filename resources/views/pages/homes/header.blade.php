@@ -16,12 +16,12 @@
                             <li><a href="#">Map</a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Profile
+                                    Account
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">My Profile</a>
-                                    <a class="dropdown-item" href="#">Settings</a>
-                                    <a class="dropdown-item" href="{{url('/customer-log-out')}}">Log out</a>
+                                    <a class="dropdown-item" href="{{url('/profile-customer')}}" style="color: #403d39">Profile</a>
+                                    <a class="dropdown-item" href="{{url('/all-ticket')}}" style="color: #403d39">All Ticket</a>
+                                    <a class="dropdown-item" href="{{url('/customer-log-out')}}" style="color: #403d39">Log out</a>
                                 </div>
                             </li>
 

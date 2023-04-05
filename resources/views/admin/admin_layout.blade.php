@@ -17,15 +17,15 @@
     <link href="{{asset('public/backend/assets/css/bootstrap.min.css')}}" rel="stylesheet" />
     <link href="{{asset('public/backend/assets/css/paper-dashboard.css?v=2.0.1')}}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="{{asset('public/backend/assets/demo/demo.css')}}" rel="stylesheet" />
+{{--    <link href="{{asset('public/backend/assets/demo/demo.css')}}" rel="stylesheet" />--}}
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!--  Toastr  -->
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
 
 </head>
 
@@ -52,14 +52,16 @@
 <script src="{{asset('public/backend/assets/js/core/bootstrap.min.js')}}"></script>
 <script src="{{asset('public/backend/assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
 <!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYSkGKeqNC5qSOtfhcCSD8YpNp15svA9w&libraries=places&callback=initMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQgL5q88XL5tqLiDIWmqu88xB4lp_QDiY&callback=initMap"></script>
 <!-- Chart JS -->
 <script src="{{asset('public/backend/assets/js/plugins/chartjs.min.js')}}"></script>
 <!--  Notifications Plugin    -->
 <script src="{{asset('public/backend/assets/js/plugins/bootstrap-notify.js')}}"></script>
 <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="{{asset('public/backend/assets/js/paper-dashboard.min.js?v=2.0.1')}}" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+<script src="{{asset('public/backend/assets/js/paper-dashboard.min.js?v=2.0.1')}}" type="text/javascript"></script>
+<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{asset('public/backend/assets/demo/demo.js')}}"></script>
+
 <script>
     $(document).ready(function() {
         // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
@@ -67,7 +69,6 @@
     });
 </script>
 @include('session_notify.get_notify')
-
 </body>
 
 </html>

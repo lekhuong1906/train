@@ -21,5 +21,10 @@ class TypeTicket extends Model
         return $this->hasMany(Receipt::class,'type_ticket_id','id');
     }
 
+    public function scopeStatus($query){
+        if (($status = request()->type_status)!==null)
+            $query = $query->where('type_status',$status);
+        return $query;
+    }
 
 }

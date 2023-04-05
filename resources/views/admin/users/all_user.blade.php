@@ -1,73 +1,80 @@
 @extends('admin.admin_layout')
 @section('content')
     <div class="row-cols-auto container-fluid">
-        <form class="form-inline" method="get">
+        <form class="form-inline">
             <div class="form-group row">
-                <label for="type_status" class="col-sm col-form-label">Receipt Status</label>
+                <label for="type_status" class="col-sm col-form-label">Type Account</label>
                 <div class="col-sm-4">
-                    <select class="form-control" name="receipt_status">
-                        <option value="1">Success</option>
-                        <option value="0">Failure</option>
+                    <select class="form-control" name="type_account">
+                        <option value="1">Admin</option>
+                        <option value="0">Guest</option>
                     </select>
                 </div>
                 <button class="btn btn-default sm-2" type="submit">Submit</button>
             </div>
+
         </form>
     </div>
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title"> List Of Receipt</h4>
+                <h4 class="card-title"> List Account User</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">
-                        <thead class=" text-primary text-center">
-                        <th>
-                            Receipt Code
-                        </th>
-                        <th>
-                            Type Ticket Name
-                        </th>
+                        <thead class=" text-primary">
                         <th>
                             User Name
                         </th>
                         <th>
-                            Receipt Total
+                            Email
                         </th>
                         <th>
-                            Receipt Status
+                            Identity Card
+                        </th>
+                        <th>
+                            Phone
+                        </th>
+                        <th>
+                            Address
+                        </th>
+                        <th>
+                            Type Account
                         </th>
                         <th class="text-right">
                         </th>
                         </thead>
-                        <tbody class="text-center">
-                        @foreach($all_receipt as $receipt)
+                        <tbody>
+                        @foreach($users as $user)
                             <tr>
                                 <td>
-                                    {{$receipt->receipt_code}}
+                                    {{$user->name}}
                                 </td>
                                 <td>
-                                    {{$receipt->type_ticket->type_name}}
+                                    {{$user->email}}
                                 </td>
                                 <td>
-                                    {{$receipt->user->name}}
+                                    {{$user->identity_card}}
                                 </td>
                                 <td>
-                                    {{$receipt->receipt_total}}
+                                    {{$user->phone}}
                                 </td>
-                                <td style="color: {{$receipt->subscription->ticket->ticket_status ? 'Green' : 'Red'}};">
-                                    {{$receipt->subscription->ticket->ticket_status ? 'Valid' : 'Invalid'}}
+                                <td>
+                                    {{$user->address}}
                                 </td>
-
+                                <td>
+                                    {!! $user->level_account? 'Admin' : 'Guest' !!}
+                                </td>
                                 <td class="text-right">
-                                    <a href="{{url('/receipt-detail/'.$receipt->id)}}"><i class="nc-icon nc-alert-circle-i"></i></a>
+                                    <a href="{!! $user->level_account? url('/profile/'.$user->id) : '#' !!}"><i
+                                            class="nc-icon nc-alert-circle-i"></i></a>
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-                    {{$all_receipt->appends(request()->all())->links()}}
+                    {{$users->appends(request()->all())->links()}}
                 </div>
             </div>
         </div>

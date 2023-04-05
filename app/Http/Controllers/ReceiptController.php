@@ -15,7 +15,7 @@ use MongoDB\Driver\Session;
 class ReceiptController extends Controller
 {
     public function all_receipt(){
-        $all_receipt = Receipt::get();
+        $all_receipt = Receipt::paginate(5);
         return view('admin.receipts.all_receipt')->with('all_receipt',$all_receipt);
     }
     public function receipt_detail($id){
@@ -33,11 +33,10 @@ class ReceiptController extends Controller
     public function save_receipt(Request $request){
         $new_receipt = new Receipt();
         $new_receipt->fill($request->all());
-//        $new_receipt->save();
+        $new_receipt->save();
         $receipt_id = Receipt::latest('id')->first()->id;
         $request->session()->put(['receipt_id'=>$receipt_id]);
-        alert()->success('Title','Lorem Lorem Lore');
 
-        return Redirect::to('/check-out/'.$receipt_id);
+        return Redirect::to('/check-out/'.$receipt_id)->with('message','Receipt Add Successfully');
     }
 }

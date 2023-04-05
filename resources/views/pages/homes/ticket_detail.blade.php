@@ -23,18 +23,18 @@
                                         <div class="text">
                                             <h4>{{$type_ticket->type_name}}<br><span><i class="fa fa-users"></i> 234 Check Ins</span>
                                             </h4>
-                                            <h6>{{number_format($type_ticket->type_price). 'vnd'}}<br><span>/person</span></h6>
+                                            <h6>{{number_format($type_ticket->type_price). 'vnd'}}<br><span>purchases</span></h6>
                                             <div class="line-dec"></div>
                                             <ul>
                                                 <li>Deal Includes:</li>
                                                 <li>
-                                                    <i class="fa fa-taxi"></i>Description: {{''.$type_ticket->type_description}}
+                                                    <i class="fa fa-location-arrow"></i> Description: {{''.$type_ticket->type_description}}
                                                 </li>
-                                                <li><i class="fa fa-plane"></i>Total day: {{''.$type_ticket->total_day}}
+                                                <li><i class="fa fa-calendar-minus"></i> Total day: {{''.$type_ticket->total_day}}
                                                 </li>
-                                                <li>
-                                                    <i class="fa fa-building"></i>Status: {{''.$type_ticket->type_status}}
-                                                </li>
+{{--                                                <li>--}}
+{{--                                                    <i class="fa fa-building"></i>Status: {{''.$type_ticket->type_status}}--}}
+{{--                                                </li>--}}
                                             </ul>
                                             <div class="main-button">
                                                 <a href="{{url('/create-receipt/'.$type_ticket->id)}}">Payment Now</a>

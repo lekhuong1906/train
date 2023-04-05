@@ -42,6 +42,10 @@ class HomeController extends Controller
         $new_account->save();
         return redirect('/login');
     }
+    public function profile_customer(){
+        return view('pages.account.profile_customer');
+    }
+
     public function log_out(){
         Auth::logout();
         return Redirect::to('/');

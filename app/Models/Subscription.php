@@ -20,4 +20,7 @@ class Subscription extends Model
     public function receipt(){
         return $this->belongsTo(\App\Models\Receipt::class,'receipt_id');
     }
+    public function ticket(){
+        return $this->hasOne(TicKet::class,'payment_id');
+    }
 }

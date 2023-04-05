@@ -23,6 +23,31 @@ class AdminController extends Controller
     public function dashboard(){
         return view('admin.dashboard.content');
     }
+    public function new_user(){
+        return view('admin.users.new_user');
+    }
+    public function add_user(Request $request){
+        $profile = new User();
+        $profile->fill($request->all());
+        $profile->save();
+        return view('admin.users.profile')->with('message','Add User Success');
+    }
+    public function all_user(){
+        $users = User::typeAccount()->paginate(5);
+        return view('admin.users.all_user')->with('users',$users);
+    }
+
+    public function profile($id){
+        $user = User::find($id);
+        return view('admin.users.profile')->with('user',$user);
+    }
+    public function update_profile($id, Request $request){
+        $profile = User::find($id);
+        $profile->fill($request->all());
+        $profile->save();
+        return redirect()->route('profile')->with('message','Update Profile Success');
+    }
+
     public function log_out(){
         Auth::logout();
         return Redirect::to('admin-login');

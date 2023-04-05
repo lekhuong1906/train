@@ -63,7 +63,7 @@ class PaymentController extends Controller
             $charge['error'] = $e->getMessage();
         }
 
-        return Redirect::to('/');
+        return Redirect::to('/')->with('message',' Payment Successfully');
     }
     public function subcription($charge,$id){
         $data = [

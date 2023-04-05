@@ -1,6 +1,5 @@
 <script>
     $(document).ready(function () {
-
         @if(Session::has('message'))
             toastr.options =
             {

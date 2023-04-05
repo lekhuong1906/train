@@ -43,4 +43,10 @@ class User extends Authenticatable
     public function receipt(){
         return $this->hasMany(Receipt::class,'user_id','id');
     }
+
+    public function scopeTypeAccount($query){
+       if(($type_account = request()->type_account) !== null)
+            $query = $query->where('level_account',$type_account);
+       return $query;
+    }
 }

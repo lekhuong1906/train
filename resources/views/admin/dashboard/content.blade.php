@@ -1,45 +1,32 @@
 @extends('admin.admin_layout')
 @section('content')
+
     <div class="row">
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-                <div class="card-body ">
-                    <div class="row">
-                        <div class="col-5 col-md-4">
-                            <div class="icon-big text-center icon-warning">
-                                <i class="nc-icon nc-globe text-warning"></i>
-                            </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                            <div class="numbers">
-                                <p class="card-category">Capacity</p>
-                                <p class="card-title">150GB
-                                <p>
-                            </div>
-                        </div>
-                    </div>
+        <div class="col-lg col-md-6 col-sm-6">
+            <form>
+                <div class="form-group">
+                    <label for="type_status">Date</label>
+                    <select class="form-control" name="type_status">
+                        <option value="1">Today</option>
+                        <option value="0">This Month</option>
+                        <option value="2">This Year</option>
+                    </select>
                 </div>
-                <div class="card-footer ">
-                    <hr>
-                    <div class="stats">
-                        <i class="fa fa-refresh"></i>
-                        Update Now
-                    </div>
-                </div>
-            </div>
+                <button class="btn btn-default " type="submit">Submit</button>
+            </form>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="col-lg col-md-6 col-sm-6">
             <div class="card card-stats">
                 <div class="card-body ">
                     <div class="row">
                         <div class="col-5 col-md-4">
                             <div class="icon-big text-center icon-warning">
-                                <i class="nc-icon nc-money-coins text-success"></i>
+                                <i class="nc-icon nc-sound-wave text-danger"></i>
                             </div>
                         </div>
                         <div class="col-7 col-md-8">
                             <div class="numbers">
-                                <p class="card-category">Revenue</p>
+                                <p class="card-category">Sale</p>
                                 <p class="card-title">$ 1,345
                                 <p>
                             </div>
@@ -55,19 +42,19 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="col-lg col-md-6 col-sm-6">
             <div class="card card-stats">
                 <div class="card-body ">
                     <div class="row">
                         <div class="col-5 col-md-4">
                             <div class="icon-big text-center icon-warning">
-                                <i class="nc-icon nc-vector text-danger"></i>
+                                <i class="nc-icon nc-money-coins text-success"></i>
                             </div>
                         </div>
                         <div class="col-7 col-md-8">
                             <div class="numbers">
-                                <p class="card-category">Errors</p>
-                                <p class="card-title">23
+                                <p class="card-category">Revenue</p>
+                                <p class="card-title">$ 1,223
                                 <p>
                             </div>
                         </div>
@@ -82,19 +69,19 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="col-lg col-md-6 col-sm-6">
             <div class="card card-stats">
                 <div class="card-body ">
                     <div class="row">
                         <div class="col-5 col-md-4">
                             <div class="icon-big text-center icon-warning">
-                                <i class="nc-icon nc-favourite-28 text-primary"></i>
+                                <i class="nc-icon nc-single-copy-04 text-primary"></i>
                             </div>
                         </div>
                         <div class="col-7 col-md-8">
                             <div class="numbers">
-                                <p class="card-category">Followers</p>
-                                <p class="card-title">+45K
+                                <p class="card-category">Total Ticket</p>
+                                <p class="card-title">234
                                 <p>
                             </div>
                         </div>
@@ -110,25 +97,37 @@
             </div>
         </div>
     </div>
+
     <div class="row">
-        <div class="col-md-12">
-            <div class="card ">
-                <div class="card-header ">
-                    <h5 class="card-title">Users Behavior</h5>
-                    <p class="card-category">24 Hours performance</p>
+        <div class="col-md">
+            <div class="card card-chart">
+                <div class="card-header">
+                    <h5 class="card-title">SALE and REVENUE</h5>
+                    <p class="card-category">Line Chart with Points</p>
                 </div>
-                <div class="card-body ">
-                    <canvas id=chartHours width="400" height="100"></canvas>
+                <div class="card-body">
+                    <canvas id="speedChart" width="400" height="100"></canvas>
                 </div>
-                <div class="card-footer ">
-                    <hr>
-                    <div class="stats">
-                        <i class="fa fa-history"></i> Updated 3 minutes ago
+                <div class="card-footer">
+                    <div class="chart-legend">
+                        <i class="fa fa-circle text-info"></i> Tesla Model S
+                        <i class="fa fa-circle text-warning"></i> BMW 5 Series
+                    </div>
+                    <hr/>
+                    <div class="card-stats">
+                        <i class="fa fa-check"></i> Data information certified
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
     <div class="row">
         <div class="col-md-4">
             <div class="card ">
@@ -154,22 +153,18 @@
             </div>
         </div>
         <div class="col-md-8">
-            <div class="card card-chart">
-                <div class="card-header">
-                    <h5 class="card-title">NASDAQ: AAPL</h5>
-                    <p class="card-category">Line Chart with Points</p>
+            <div class="card ">
+                <div class="card-header ">
+                    <h5 class="card-title">Users Behavior</h5>
+                    <p class="card-category">24 Hours performance</p>
                 </div>
-                <div class="card-body">
-                    <canvas id="speedChart" width="400" height="100"></canvas>
+                <div class="card-body ">
+                    <canvas id=chartHours width="400" height="100"></canvas>
                 </div>
-                <div class="card-footer">
-                    <div class="chart-legend">
-                        <i class="fa fa-circle text-info"></i> Tesla Model S
-                        <i class="fa fa-circle text-warning"></i> BMW 5 Series
-                    </div>
-                    <hr/>
-                    <div class="card-stats">
-                        <i class="fa fa-check"></i> Data information certified
+                <div class="card-footer ">
+                    <hr>
+                    <div class="stats">
+                        <i class="fa fa-history"></i> Updated 3 minutes ago
                     </div>
                 </div>
             </div>

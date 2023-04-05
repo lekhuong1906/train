@@ -47,12 +47,14 @@
                                     @if($receipt->subscription->stripe_status)
                                         <td class="text-left"><i class="nc-icon nc-check-2 text-success"></i></td>
                                     @else
-                                        <td><i class="nc-icon nc-simple-remove text-danger"></i></td>
+                                        <td class="text-left"><i class="nc-icon nc-simple-remove text-danger"></i></td>
                                     @endif
                                 </tr>
                                 <tr>
                                     <td><h6>Receipt Status</h6></td>
-                                    <td class="text-left" style="color: red">Success</td>
+                                    <td class="text-left" style="color: {{$receipt->subscription->ticket->ticket_status ? 'Green' : 'Red'}}">
+                                        {{$receipt->subscription->ticket->ticket_status ? 'Valid' : 'Invalid'}}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td></td>

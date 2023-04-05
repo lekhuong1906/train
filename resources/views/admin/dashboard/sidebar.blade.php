@@ -44,11 +44,12 @@
                         <p>Receipt</p>
                     </a>
                 </li>
-                <li>
-                    <a href="./user.html">
-                        <i class="nc-icon nc-single-02"></i>
-                        <p>User Profile</p>
-                    </a>
+                <li class="item">
+                    <a class="sub-btn" style="display: flex"><i class="nc-icon nc-single-02"></i><span>User</span><i class="nc-icon nc-minimal-down right dropdown" style="right: inherit"></i></a>
+                    <div class="sub-menu">
+                        <a href="{{url('/new-user')}}" class="sub-item">New User</a>
+                        <a href="{{url('/all-user')}}" class="sub-item">All User</a>
+                    </div>
                 </li>
             </ul>
         </div>

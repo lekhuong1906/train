@@ -38,9 +38,17 @@ Route::group(['middleware'=>['auth']],function (){
     //receipt
     Route::get('/all-receipt',[ReceiptController::class,'all_receipt']);
     Route::get('/receipt-detail/{id}',[ReceiptController::class,'receipt_detail']);
-    Route::get('/maps',[MapController::class,'maps']);
 
-    Route::get('/profile',[UserController::class,'profile']);
+    //maps
+    Route::get('/maps',[MapController::class,'maps'])->name('maps');
+    Route::post('/add-station',[MapController::class,'add_station'])->name('add-station');
+
+    //account user
+    Route::get('/new-user',[AdminController::class,'new_user']);
+    Route::get('/all-user',[AdminController::class,'all_user']);
+    Route::post('/add-user',[AdminController::class,'add_user']);
+    Route::get('/profile/{id}',[AdminController::class,'profile'])->name('profile');
+    Route::post('/update-profile/{id}',[AdminController::class,'update_profile']);
 
     //logout
     Route::get('log-out',[AdminController::class,'log_out']);
@@ -75,12 +83,11 @@ Route::group(['middleware'=>['customer-login']],function (){
 Route::get('/all-ticket',[TicketController::class,'all_ticket']);
 Route::get('/qrcode/{ticket_code}',[TicketController::class,'qrcode']);
 
-Route::get('/profiles',function (){
-    return view('pages.account.profile');
-})->name('profile');
+Route::get('/profile-customer',[HomeController::class,'profile_customer']);
 
 
 Route::get('/test',function (){
+    \Illuminate\Support\Facades\Auth::user()->getAuthIdentifierName();
 
 });
 

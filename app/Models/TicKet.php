@@ -16,4 +16,11 @@ class TicKet extends Model
         'day_end',
         'ticket_status',
     ];
+    public function subscription(){
+        return $this->belongsTo(TicKet::class,'payment_id');
+    }
+
+    public function scopeTicket($query){
+
+    }
 }

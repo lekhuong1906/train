@@ -25,5 +25,4 @@ class Receipt extends Model
         return $this->hasOne(Subscription::class,'receipt_id');
     }
 
-
 }
