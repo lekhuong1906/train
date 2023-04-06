@@ -16,7 +16,7 @@ class CreateStations extends Migration
         Schema::create('stations', function (Blueprint $table) {
             $table->id();
             $table->string('station_name');
-            $table->float('lang');
+            $table->float('lng');
             $table->float('lat');
             $table->integer('station_status');
             $table->timestamps();

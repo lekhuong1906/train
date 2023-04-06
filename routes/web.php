@@ -87,7 +87,6 @@ Route::get('/profile-customer',[HomeController::class,'profile_customer']);
 
 
 Route::get('/test',function (){
-    \Illuminate\Support\Facades\Auth::user()->getAuthIdentifierName();
 
 });
 

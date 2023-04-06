@@ -15,10 +15,10 @@ class AdminController extends Controller
     public function sign_in(Request $request){
         $user = User::where('email',$request->email)->where('password',md5($request->password))->where('level_account',1)->first();
         if ($user !== null){
-            Auth::login($user);
+            Auth::login($user, true);
             return redirect()->intended('/dashboard');
         }
-        return redirect()->back();
+        return redirect()->back()->with('message','Login Fail, Check in My email or Password');
     }
     public function dashboard(){
         return view('admin.dashboard.content');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendMail;
 use App\Models\Receipt;
 use App\Models\Subscription;
 use App\Models\TicKet;
@@ -62,6 +63,12 @@ class PaymentController extends Controller
         } catch (Exception $e) {
             $charge['error'] = $e->getMessage();
         }
+        #Send mail
+        $detail = TicKet::orderby('id','desc')->first();
+        $detail['email'] = Auth::user()->email;
+
+        SendMail::dispatch($detail->toArray())->delay(now()->addSeconds(2));
+
 
         return Redirect::to('/')->with('message',' Payment Successfully');
     }
