@@ -2,8 +2,14 @@
 
 namespace App\Console;
 
+use App\Http\Controllers\PaymentController;
+use App\Models\Receipt;
+use App\Models\ReportSummary;
+use App\Models\Subscription;
+use App\Models\TicKet;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -15,7 +21,28 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+
+        //update ticket status
+        $schedule->call(function (){
+            $ticket_invalid = TicKet::whereDate('day_end','<',now())->get();
+            foreach ($ticket_invalid as $ticket){
+                $ticket->ticket_status = 0;
+                $ticket->save();
+            }
+        })->dailyAt('23:59');
+
+        //update table report summary
+        $schedule->call(function (){
+            $data = [
+                'revenue'=> Subscription::whereDate('created_at',now())->sum('amount'),
+                'order_completed'=> TicKet::whereDate('updated_at',now())->invalid()->count(),
+                'ticket_sold'=>Receipt::whereDate('created_at',now())->count(),
+            ];
+            $summary = new ReportSummary();
+            $summary->fill($data);
+            $summary->save();
+
+        })->dailyAt('23:59');
     }
 
     /**

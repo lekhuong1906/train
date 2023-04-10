@@ -34,5 +34,9 @@ class TypeTicketController extends Controller
         $all_type_ticket = TypeTicket::status()->paginate(5);
         return view('admin.type_tickets.all_type_ticket')->with('all_type_ticket',$all_type_ticket);
     }
+    public function delete_type_ticket($id){
+        TypeTicket::where('id',$id)->delete();
+        return redirect()->back()->with('message','Deleted Success');
+    }
 }
 

@@ -10,8 +10,8 @@
                 </div>
                 <!-- <p>CT</p> -->
             </a>
-            <a href="{{url('/profile')}}" class="simple-text logo-normal">
-                Admin Name
+            <a href="{{url('/dashboard')}}" class="simple-text logo-normal">
+                {{\Illuminate\Support\Facades\Auth::user()->name}}
                 <!-- <div class="logo-image-big">
                   <img src="../assets/img/logo-big.png">
                 </div> -->
@@ -33,11 +33,13 @@
                     </div>
                 </li>
                 <li>
-                    <a href="{{url('/maps')}}">
-                        <i class="nc-icon nc-pin-3"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
+                <li class="item">
+                    <a class="sub-btn" style="display: flex"><i class="nc-icon nc-pin-3"></i><span>Station</span><i class="nc-icon nc-minimal-down right dropdown" style="right: inherit"></i></a>
+                    <div class="sub-menu">
+                        <a href="{{url('/add-station')}}" class="sub-item">Add Station</a>
+                        <a href="{{url('/all-station')}}" class="sub-item">All Station</a>
+                        <a href="{{url('/maps')}}" class="sub-item">Maps</a>
+                    </div>
                 <li>
                     <a href="{{url('all-receipt')}}">
                         <i class="nc-icon nc-bell-55"></i>

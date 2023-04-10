@@ -55,6 +55,7 @@
                                 </td>
                                 <td class="text-right">
                                     <a href="{{url('/edit-type-ticket/'.$type_ticket->id)}}"><i class="nc-icon nc-alert-circle-i"></i></a>
+                                    <a onclick="return confirm('Are you sure you want to delete this type ticket?')" href="{{url('/delete-type-ticket/'.$type_ticket->id)}}"><i class="nc-icon nc-simple-remove" style="color: red"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -65,4 +66,7 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready()
+    </script>
 @endsection

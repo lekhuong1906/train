@@ -69,6 +69,9 @@
                                 <td class="text-right">
                                     <a href="{!! $user->level_account? url('/profile/'.$user->id) : '#' !!}"><i
                                             class="nc-icon nc-alert-circle-i"></i></a>
+                                    <a onclick="return confirm('Are you sure you want to delete this user account?')"
+                                       href="{!! $user->level_account? url('/delete-user/'.$user->id): '#' !!}"><i
+                                            class="nc-icon nc-simple-remove" style="color: red"></i></a>
                                 </td>
                             </tr>
                         @endforeach

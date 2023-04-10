@@ -6,8 +6,8 @@
                 <label for="type_status" class="col-sm col-form-label">Receipt Status</label>
                 <div class="col-sm-4">
                     <select class="form-control" name="receipt_status">
-                        <option value="1">Success</option>
-                        <option value="0">Failure</option>
+                        <option value="1">Valid</option>
+                        <option value="0">Invalid</option>
                     </select>
                 </div>
                 <button class="btn btn-default sm-2" type="submit">Submit</button>

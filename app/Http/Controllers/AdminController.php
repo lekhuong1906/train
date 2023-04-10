@@ -20,9 +20,7 @@ class AdminController extends Controller
         }
         return redirect()->back()->with('message','Login Fail, Check in My email or Password');
     }
-    public function dashboard(){
-        return view('admin.dashboard.content');
-    }
+
     public function new_user(){
         return view('admin.users.new_user');
     }
@@ -46,6 +44,10 @@ class AdminController extends Controller
         $profile->fill($request->all());
         $profile->save();
         return redirect()->route('profile')->with('message','Update Profile Success');
+    }
+    public function delete_user($id){
+        User::where('id',$id)->delete();
+        return redirect()->back()->with('message','Deleted Account User Success');
     }
 
     public function log_out(){
