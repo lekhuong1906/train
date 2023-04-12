@@ -13,15 +13,7 @@ class TicketController extends Controller
     public function all_ticket(){
         $userId = auth()->id(); // Get the ID of the logged in user
 
-        $all_payment = Subscription::where('user_id',$userId)->get();
-
-        foreach ($all_payment as $value){
-
-        }
-        dd($all_payment);
-
-
-
+        $all_ticket = TicKet::get();
 
         return view('pages.account.all_ticket')->with('all_ticket',$all_ticket);
     }

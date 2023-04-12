@@ -10,7 +10,6 @@ use PhpParser\Node\Stmt\Return_;
 class MapController extends Controller
 {
     public function add_station(){
-        $all_station = Station::get();
         return view('admin.stations.add_station');
     }
     public function save_station(Request $request){
@@ -40,5 +39,11 @@ class MapController extends Controller
     public function maps(){
         $all_station=Station::get();
         return view('admin.stations.map')->with('all_station',$all_station);
+    }
+
+    //map page
+    public function maps_page(){
+        $all_station=Station::get();
+        return view('pages.homes.maps')->with('all_station',$all_station);
     }
 }

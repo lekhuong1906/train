@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserFormRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,13 +13,13 @@ class AdminController extends Controller
     public function admin_login(){
         return view('admin.login.admin_login');
     }
-    public function sign_in(Request $request){
+    public function sign_in(UserFormRequest $request){
         $user = User::where('email',$request->email)->where('password',md5($request->password))->where('level_account',1)->first();
         if ($user !== null){
             Auth::login($user, true);
             return redirect()->intended('/dashboard');
         }
-        return redirect()->back()->with('message','Login Fail, Check in My email or Password');
+        return redirect()->back()->with('error','Login Fail, Check in My email or Password');
     }
 
     public function new_user(){

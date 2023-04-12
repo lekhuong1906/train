@@ -1,5 +1,11 @@
 <script>
     $(document).ready(function () {
+        @if (!empty($errors->all()))
+            @foreach ($errors->all() as $error)
+                toastr.error("{{$error}}")
+            @endforeach
+        @endif
+
         @if(Session::has('message'))
             toastr.options =
             {
@@ -9,7 +15,7 @@
         toastr.success("{{ session('message') }}");
         @endif
 
-            @if(Session::has('error'))
+        @if(Session::has('error'))
             toastr.options =
             {
                 "closeButton": true,
@@ -18,7 +24,7 @@
         toastr.error("{{ session('error') }}");
         @endif
 
-            @if(Session::has('info'))
+        @if(Session::has('info'))
             toastr.options =
             {
                 "closeButton": true,
@@ -27,13 +33,13 @@
         toastr.info("{{ session('info') }}");
         @endif
 
-            @if(Session::has('warning'))
+        @if(Session::has('warning'))
             toastr.options =
             {
                 "closeButton": true,
                 "progressBar": true
             }
-        toastr.warning("{{ session('warning') }}");
+            toastr.warning("{{ session('warning') }}");
         @endif
     })
 </script>

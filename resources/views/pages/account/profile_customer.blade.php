@@ -80,35 +80,35 @@
 
                         <div class="row">
                             <div class="text-center">
-                                <img src="{{asset('public/frontend/assets/images/avt.png')}}" alt="Profile Picture">
+                                <img src="{{asset('public/frontend/assets/images/avt.jpg')}}" alt="Profile Picture">
                             </div>
-                            <h1 class="text-center">John Doe</h1>
+                            <h1 class="text-center">{{$info->name}}</h1>
                             <hr>
                         </div>
 
                         <div class="row">
                             <div class="col-md-12">
                                 <label for="name" class="form-label">Your Name</label>
-                                <input type="text" name="name" value="NGUYEN VAN A">
+                                <input type="text" name="name" value="{{$info->name}}">
                             </div>
                             <div class="col-md-12">
                                 <label for="email" class="form-label">Your Email</label>
-                                <input type="text" name="email" value="customer_2@gmail.com">
+                                <input type="text" name="email" value="{{$info->email}}">
                             </div>
                             <div class="col-lg-6">
                                 <fieldset>
                                     <label for="identity_card" class="form-label">Your Identity Card</label>
-                                    <input type="text" name="identity_card" value="192">
+                                    <input type="text" name="identity_card" value="{{$info->identity_card}}">
                                 </fieldset>
                             </div>
                             <div class="col-lg-6">
                                 <fieldset>
                                     <label for="phone" class="form-label">Your Phone</label>
-                                    <input type="text" name="phone" value="192">
+                                    <input type="text" name="phone" value="{{$info->phone}}">
                                 </fieldset>
                             </div><div class="col-md-12">
                                 <label for="name" class="form-label">Your Address</label>
-                                <input type="text"  value="12 Nguyen Thi Minh Khai">
+                                <input type="text"  value="{{$info->address}}">
                             </div>
 
                             <hr/>

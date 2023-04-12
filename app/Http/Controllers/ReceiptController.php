@@ -34,13 +34,4 @@ class ReceiptController extends Controller
         $type_ticket = TypeTicket::where('id',$id)->first();
         return view('pages.payments.create_receipt')->with('type_ticket',$type_ticket);
     }
-    public function save_receipt(Request $request){
-        $new_receipt = new Receipt();
-        $new_receipt->fill($request->all());
-        $new_receipt->save();
-        $receipt_id = Receipt::latest('id')->first()->id;
-        $request->session()->put(['receipt_id'=>$receipt_id]);
-
-        return Redirect::to('/check-out/'.$receipt_id)->with('message','Receipt Add Successfully');
-    }
 }

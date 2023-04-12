@@ -5,11 +5,6 @@
             <div class="signin-content">
                 <div class="signin-form">
                     <h2 class="form-title">Sign In</h2>
-                    @if ($errors->any())
-                        @foreach ($errors->all() as $error)
-                            <div>{{$error}}</div>
-                        @endforeach
-                    @endif
                     <form method="post" class="register-form" action="{{url('/sign-in')}}" id="login-form">
                         @csrf
                         <div class="form-group">

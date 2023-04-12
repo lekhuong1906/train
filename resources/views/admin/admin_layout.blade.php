@@ -38,11 +38,6 @@
     <div class="main-panel">
         @include('admin.dashboard.navbar')
         <div class="content">
-            @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                    <div>{{$error}}</div>
-                @endforeach
-            @endif
             @yield('content')
         </div>
         @include('admin.dashboard.footer')

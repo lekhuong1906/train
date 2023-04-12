@@ -13,13 +13,13 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li><a href="{{url('/')}}" class="active">Home</a></li>
-                            <li><a href="#">Map</a></li>
+                            <li><a href="{{url('/maps-page')}}">Map</a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Account
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="{{url('/profile-customer')}}" style="color: #403d39">Profile</a>
+                                    <a class="dropdown-item" href="{{url('/profile-customer/'.\Illuminate\Support\Facades\Auth::id())}}" style="color: #403d39">Profile</a>
                                     <a class="dropdown-item" href="{{url('/all-ticket')}}" style="color: #403d39">All Ticket</a>
                                     <a class="dropdown-item" href="{{url('/customer-log-out')}}" style="color: #403d39">Log out</a>
                                 </div>

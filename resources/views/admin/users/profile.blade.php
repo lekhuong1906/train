@@ -5,18 +5,15 @@
             <div class="col-md">
                 <div class="card card-user">
                     <div class="image">
-                        <img src="{{asset('public/backend/assets/img/damir-bosnjak.jpg')}}" alt="...">
+                        <img src="{{asset('public/backend/assets/img/background.png')}}" alt="..." width="100%">
                     </div>
                     <div class="card-body">
                         <div class="author">
                             <a href="#">
-                                <img class="avatar border-gray" src="{{asset('public/backend/assets/img/mike.jpg')}}"
+                                <img class="avatar border-gray" src="{{asset('public/backend/assets/img/avt.jpg')}}"
                                      alt="...">
                                 <h5 class="title">{{$user->name}}</h5>
                             </a>
-                            <p class="description">
-                            <h5>{{$user->name}}</h5>
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -72,7 +69,7 @@
                             </div>
                             <div class="row">
                                 <div class="update ml-auto mr-auto">
-                                    <button type="submit" class="btn btn-primary btn-round">Update Profile</button>
+                                    <button type="submit" class="btn btn-primary btn-round" >Update Profile</button>
                                 </div>
                             </div>
                         </form>

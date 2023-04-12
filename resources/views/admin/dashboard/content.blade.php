@@ -21,13 +21,13 @@
                     <div class="row">
                         <div class="col-5 col-md-4">
                             <div class="icon-big text-center icon-warning">
-                                <i class="nc-icon nc-sound-wave text-danger"></i>
+                                <i class="nc-icon nc-money-coins text-success"></i>
                             </div>
                         </div>
                         <div class="col-7 col-md-8">
                             <div class="numbers">
                                 <p class="card-category">Revenue</p>
-                                <p class="card-title">{{number_format($summary['revenue']). 'vnd'}}
+                                <p class="card-title">{{number_format($summary['revenue'])}}
                                 <p>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                     <div class="row">
                         <div class="col-5 col-md-4">
                             <div class="icon-big text-center icon-warning">
-                                <i class="nc-icon nc-money-coins text-success"></i>
+                                <i class="nc-icon nc-sound-wave text-danger"></i>
                             </div>
                         </div>
                         <div class="col-7 col-md-8">

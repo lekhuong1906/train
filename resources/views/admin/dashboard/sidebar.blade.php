@@ -6,7 +6,7 @@
         <div class="logo">
             <a href="#" class="simple-text logo-mini">
                 <div class="logo-image-small">
-                    <img src="{{asset('public/backend/assets/img/logo-small.png')}}">
+                    <img src="{{asset('public/backend/assets/img/avt.jpg')}}">
                 </div>
                 <!-- <p>CT</p> -->
             </a>

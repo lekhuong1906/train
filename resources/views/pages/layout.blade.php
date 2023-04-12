@@ -59,6 +59,9 @@
 <script src="{{asset('public/frontend/assets/js/popup.js')}}"></script>
 <script src="{{asset('public/frontend/assets/js/custom.js')}}"></script>
 
+<!--Map Api -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQgL5q88XL5tqLiDIWmqu88xB4lp_QDiY&callback=initMap"></script>
+
 <script>
     $(".option").click(function () {
         $(".option").removeClass("active");

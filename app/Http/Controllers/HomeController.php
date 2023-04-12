@@ -22,14 +22,14 @@ class HomeController extends Controller
 
         return view('pages.login.sign_in');
     }
-    public function sign_in(Request $request){
+    public function sign_in(UserFormRequest $request){
         $customer = User::where('email',$request->email)->where('password',md5($request->password))->where('level_account',0)->first();
         if ($customer !== null){
             Auth::login($customer);
             return redirect()->intended('/');
         }
-        return back()->withErrors([
-            'message' => 'The provided credentials do not match our records.',
+        return back()->with([
+            'info' => 'Login fail. Checking for Email or Password!',
         ])->onlyInput('email');
     }
     public function sign_up(){
@@ -42,8 +42,9 @@ class HomeController extends Controller
         $new_account->save();
         return redirect('/login');
     }
-    public function profile_customer(){
-        return view('pages.account.profile_customer');
+    public function profile_customer($id){
+        $infor = User::find($id);
+        return view('pages.account.profile_customer')->with('info',$infor);
     }
 
     public function log_out(){
