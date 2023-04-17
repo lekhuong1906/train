@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <form id="reservation-form" name="gs" method="post" role="search" action="{{url('/payment')}}">
+                    <form id="reservation-form" name="gs" method="post" role="search" action="{{url('/payment/')}}">
                         @csrf
                         <div class="row">
                             <div class="col-lg-12">
@@ -30,6 +30,9 @@
                                     <input type="text" name="cvv" class="cvv" placeholder="192"
                                            autocomplete="on" >
                                 </fieldset>
+                            </div>
+                            <input hidden name="receiptId" value="{{$receiptId}}" >
+
                             </div>
                             <div class="main-button">
                                     <button type="submit" class="main-button">Payment</button>

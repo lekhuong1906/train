@@ -22,17 +22,40 @@ use Illuminate\Support\Facades\Redirect;
 
 class PaymentController extends Controller
 {
-    public function checkout($id)
+    public function checkout($receiptId)
     {
-        return view('pages.payments.payment');
+        return view('pages.payments.payment')->with('receiptId',$receiptId);
     }
 
-    public function payment(Request $request)
+    public function payment(Request $request){
+        $receiptId = $request->receiptId;
+        $charge= $this->create_charge($request,$receiptId);
+        $subscriptionId = Subscription::orderby('id', 'desc')->first()->id;
+
+        if (!empty($charge) && $charge['status'] == 'succeeded') {
+            #Create Subscription
+            $this->subcription($charge, $receiptId);
+
+            #Create Ticket
+            $this->create_ticket($subscriptionId);
+
+            Toastr::success('success', 'Payment completed.');
+        } else {
+            Toastr::error('danger', 'Payment failed.');
+            return redirect()->back()->with('error','Payment failed');
+        }
+        #Send mail
+        $this->send_mail();
+
+        return redirect()->route('/')->with('message','Payment Success');
+    }
+
+    /* create Charge */
+    public function create_charge(Request $request,$receiptId)
     {
         Stripe::setApiKey('sk_test_51Ll5TpHPOVRsN3XUqNRhVP4TXg6uhjMVLQ88AbyLajW4HLiUp80AUEM1eimlyU5BXJtOQOip9U10vFGI8OplzR3H00vBwfAlYk');
 
-        $receipt_id = $request->session()->get('receipt_id');
-        $amount = Receipt::where('id', $receipt_id)->first()->receipt_total;
+        $amount = Receipt::where('id', $receiptId)->first()->receipt_total;
 
         try {
             #create token
@@ -51,29 +74,17 @@ class PaymentController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
-        #create charge
+        #Create charge
         $charge = Charge::create([
             'amount' => $amount,
             'currency' => 'vnd',
             'source' => $token,
             'description' => 'Ticket Payment',
         ]);
-
-        #check payment
-        if (!empty($charge) && $charge['status'] == 'succeeded') {
-            Toastr::success('success', 'Payment completed.');
-            $this->subcription($charge, $receipt_id);
-            $this->create_ticket(Subscription::orderby('id', 'desc')->first()->id);
-        } else {
-            Toastr::error('danger', 'Payment failed.');
-        }
-
-        #Send mail
-        $this->send_mail();
-
-        return Redirect::to('/')->with('message', ' Payment Successfully');
+        return $charge;
     }
 
+    /* Send mail */
     public function send_mail()
     {
         $detail = TicKet::orderby('id', 'desc')->first();
@@ -95,7 +106,7 @@ class PaymentController extends Controller
         $subscription->save();
     }
 
-    //create receipt
+    /* Create receipt */
     public function save_receipt(Request $request)
     {
         $new_receipt = new Receipt();
@@ -107,7 +118,7 @@ class PaymentController extends Controller
         return Redirect::to('/check-out/' . $receipt_id)->with('message', 'Receipt Add Successfully');
     }
 
-    //create ticket
+    /* create ticket */
     public function create_ticket($id)
     {
         $data = [
@@ -121,6 +132,7 @@ class PaymentController extends Controller
         $new_ticket->fill($data);
         $new_ticket->save();
     }
+
 
     public function day_start($id)
     {
@@ -148,11 +160,9 @@ class PaymentController extends Controller
         return 1;
     }
 
-    public function create_ticket_code()
-    {
-        $str = '';
-        for ($i = 0; $i < 8; $i++)
-            $str .= chr(random_int(65, 90));
-        return $str;
+    public function create_ticket_code(){
+        $now = Carbon::now()->format('dmY');
+        return 'TTK' . $now;
     }
+
 }

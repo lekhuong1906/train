@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserFormRequest;
+use App\Mail\MailPasswordReset;
+use App\Models\PasswordReset;
 use App\Models\TypeTicket;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -32,6 +37,8 @@ class HomeController extends Controller
             'info' => 'Login fail. Checking for Email or Password!',
         ])->onlyInput('email');
     }
+
+    #Sign up
     public function sign_up(){
         return view('pages.login.sign_up');
     }
@@ -42,9 +49,24 @@ class HomeController extends Controller
         $new_account->save();
         return redirect('/login');
     }
+
+    #Profile
     public function profile_customer($id){
         $infor = User::find($id);
         return view('pages.account.profile_customer')->with('info',$infor);
+    }
+
+    #Forgot Password
+    public function submit_reset_password(Request $request){
+        $updatePassword = PasswordReset::where('email',$request->email,'token',$request->token)->latest('created_at')->exists();
+        if ($updatePassword == false)
+            return \redirect()->back()->with('error','Invalid Token');
+
+        $user = User::where('email',$request->email)->first();
+        $user->fill($request->all());
+        $user->save();
+
+        return \redirect()->route('customer-login')->with('message','Updated password success');
     }
 
     public function log_out(){

@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
                 $ticket->ticket_status = 0;
                 $ticket->save();
             }
-        })->dailyAt('23:59');
+        })->everyMinute();
 
         //update table report summary
         $schedule->call(function (){
@@ -42,7 +42,7 @@ class Kernel extends ConsoleKernel
             $summary->fill($data);
             $summary->save();
 
-        })->dailyAt('23:59');
+        })->everyMinute();
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
@@ -23,6 +24,13 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/admin-login',[AdminController::class,'admin_login'])->name('admin-login');
 Route::post('/admin-sign-in',[AdminController::class,'sign_in']);
+
+//forgot password
+Route::get('/forgot-password',[AdminController::class,'forgot_password']);
+Route::post('/submit-forgot-password',[AdminController::class,'submit_forgot_password']);
+Route::get('/reset-password/{token}',[AdminController::class,'reset_password'])->name('reset.password.get');
+Route::post('/update-password',[AdminController::class,'submit_reset_password'])->name('updated-password-admin');
+Route::post('/reset-password',[HomeController::class,'submit_reset_password'])->name('updated-password-customer');
 
 Route::group(['middleware'=>['auth']],function (){
 
@@ -64,10 +72,10 @@ Route::group(['middleware'=>['auth']],function (){
 
 
 //pages
-Route::get('/',[HomeController::class,'home']);
+Route::get('/',[HomeController::class,'home'])->name('/');
 
 //customer-login
-Route::get('/login',[HomeController::class,'login']);
+Route::get('/login',[HomeController::class,'login'])->name('customer-login');
 Route::post('/sign-in',[HomeController::class,'sign_in']);
 Route::get('/sign-up',[HomeController::class,'sign_up']);
 Route::post('/save-account',[HomeController::class,'save_account']);
@@ -84,6 +92,7 @@ Route::group(['middleware'=>['customer-login']],function (){
     Route::get('/profile-customer/{id}',[HomeController::class,'profile_customer']);
     Route::get('/customer-log-out',[HomeController::class,'log_out']);
 
+
     //ticket information
     Route::get('/all-ticket',[TicketController::class,'all_ticket']);
     Route::get('/qrcode/{ticket_code}',[TicketController::class,'qrcode']);
@@ -97,6 +106,7 @@ Route::group(['middleware'=>['customer-login']],function (){
 
 
 Route::get('/test',function (){
+
 
 
 
