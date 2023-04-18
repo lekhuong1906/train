@@ -29,6 +29,7 @@ class PaymentController extends Controller
 
     public function payment(Request $request){
         $receiptId = $request->receiptId;
+
         $charge= $this->create_charge($request,$receiptId);
         $subscriptionId = Subscription::orderby('id', 'desc')->first()->id;
 
@@ -161,8 +162,7 @@ class PaymentController extends Controller
     }
 
     public function create_ticket_code(){
-        $now = Carbon::now()->format('dmY');
-        return 'TTK' . $now;
+        $now = Carbon::now()->format('dmYhis');
+        return 'TK' . $now;
     }
-
 }

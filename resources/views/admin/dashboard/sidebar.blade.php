@@ -26,10 +26,10 @@
                     </a>
                 </li>
                 <li class="item">
-                    <a class="sub-btn" style="display: flex"><i class="nc-icon nc-tile-56"></i><span>Tickets</span><i class="nc-icon nc-minimal-down right dropdown" style="right: inherit"></i></a>
+                    <a class="sub-btn" style="display: flex"><i class="nc-icon nc-tile-56"></i><span>Type Tickets</span><i class="nc-icon nc-minimal-down right dropdown" style="right: inherit"></i></a>
                     <div class="sub-menu">
-                        <a href="{{url('/add-type-ticket')}}" class="sub-item">Add Ticket</a>
-                        <a href="{{url('/all-type-ticket')}}" class="sub-item">All Ticket</a>
+                        <a href="{{url('/add-type-ticket')}}" class="sub-item">Add Type Ticket</a>
+                        <a href="{{url('/all-type-ticket')}}" class="sub-item">All Type Ticket</a>
                     </div>
                 </li>
                 <li>

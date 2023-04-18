@@ -3,13 +3,13 @@
 
     <div class="row">
         <div class="col-lg col-md-6 col-sm-6">
-            <form action="{{url('dashboard')}}" method="get">
+            <form action="#" method="get" id="form-dashboard">
                 <div class="form-group">
                     <label for="date_filter">Date</label>
                     <select class="form-control" name="date_filter">
                         <option value="1">ToDay</option>
                         <option value="0">This Month</option>
-                        <option value="2">This Year</option>
+                        <option value="-1">This Year</option>
                     </select>
                 </div>
                 <button class="btn btn-default " type="submit">Submit</button>
@@ -27,7 +27,7 @@
                         <div class="col-7 col-md-8">
                             <div class="numbers">
                                 <p class="card-category">Revenue</p>
-                                <p class="card-title">{{number_format($summary['revenue'])}}
+                                <p class="card-title">{{number_format($summary->total_revenue)}}
                                 <p>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                         <div class="col-7 col-md-8">
                             <div class="numbers">
                                 <p class="card-category">Order Completed</p>
-                                <p class="card-title">{{$summary['order_completed']}}
+                                <p class="card-title">{{$summary->total_order_completed}}
                                 <p>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                         <div class="col-7 col-md-8">
                             <div class="numbers">
                                 <p class="card-category">Ticket Sold</p>
-                                <p class="card-title">{{$summary['ticket_sold']}}
+                                <p class="card-title">{{$summary->total_ticket_sold}}
                                 <p>
                             </div>
                         </div>
@@ -102,26 +102,32 @@
         <div class="col-md">
             <div class="card card-chart">
                 <div class="card-header">
-                    <h5 class="card-title">SALE</h5>
+                    <h5 class="card-title">REVENUE</h5>
                     <p class="card-category"></p>
                 </div>
                 <div class="card-body">
                     <canvas id="myChart"></canvas>
                 </div>
                 <div class="card-footer">
-                    <div class="chart-legend">
-                        <i class="fa fa-circle text-info"></i>
-                        <i class="fa fa-circle text-warning"></i>
-                    </div>
-                    <hr/>
                     <div class="card-stats">
-                        <i class="fa fa-check"></i> Data information certified
+{{--                        <i class="fa fa-check"></i> Data information certified--}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <script>
+        $(document).ready(function (){
+            let date = $('#form-dashboard').serialize();
+            console.log(date)
+            $.ajax({
+                url:'/dashboard',
+                type: 'get',
+                data: date
+            })
+        })
+    </script>
     <script>
         const ctx = document.getElementById('myChart');
 

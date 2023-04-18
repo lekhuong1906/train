@@ -106,8 +106,8 @@ Route::group(['middleware'=>['customer-login']],function (){
 
 
 Route::get('/test',function (){
-
-
+    $now = Carbon::now()->format('dmYhis');
+    dd( 'TK' . $now);
 
 
 });

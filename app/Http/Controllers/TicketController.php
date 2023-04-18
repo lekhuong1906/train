@@ -12,7 +12,7 @@ class TicketController extends Controller
 {
     public function all_ticket(){
         $userId = auth()->id();
-        $all_subscription = Subscription::where('user_id',$userId)->get();
+        $all_subscription = Subscription::where('user_id',$userId)->orderby('id','desc')->get();
         $all_ticket = array();
         foreach ($all_subscription as $value){
             $data = TicKet::where('payment_id',$value->id)->first();
