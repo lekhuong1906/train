@@ -31,9 +31,8 @@
                                            autocomplete="on" >
                                 </fieldset>
                             </div>
-                            <input hidden name="receiptId" value="{{$receiptId}}" >
+                            <input hidden name="receiptId" value="{{$receiptId}}">
 
-                            </div>
                             <div class="main-button">
                                     <button type="submit" class="main-button">Payment</button>
                             </div>

@@ -25,4 +25,18 @@ class Receipt extends Model
         return $this->hasOne(Subscription::class,'receipt_id');
     }
 
+    public function scopeCreateReceiptCode(){
+        $count = Receipt::count();
+        $data = 'HD'.($count+1);
+        return $data;
+    }
+    public function scopeGetAmount($query, $receipt_id){
+        $data = $query->find($receipt_id);
+        return $data->receipt_total;
+    }
+    public function scopeLastItem(){
+        $item = Receipt::orderby('id','desc')->first();
+        return $item->id;
+    }
+
 }

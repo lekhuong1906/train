@@ -3,16 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserFormRequest;
-use App\Mail\MailPasswordReset;
 use App\Models\PasswordReset;
 use App\Models\TypeTicket;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -24,9 +20,10 @@ class HomeController extends Controller
         return view('pages.payments.payment');
     }
     public function login(){
-
         return view('pages.login.sign_in');
     }
+
+
     public function sign_in(UserFormRequest $request){
         $customer = User::where('email',$request->email)->where('password',md5($request->password))->where('level_account',0)->first();
         if ($customer !== null){
@@ -54,6 +51,12 @@ class HomeController extends Controller
     public function profile_customer($id){
         $infor = User::find($id);
         return view('pages.account.profile_customer')->with('info',$infor);
+    }
+    public function update_profile_customer(Request $request,$id){
+        $user = User::where('id',$id)->first();
+        $user->fill($request->all());
+        $user->save();
+        return \redirect()->back()->with('message','Updated Profile Success');
     }
 
     #Forgot Password

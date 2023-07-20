@@ -15,7 +15,8 @@
         "laravel/tinker": "^2.5",
         "realrashid/sweet-alert": "^6.0",
         "simplesoftwareio/simple-qrcode": "^4.2",
-        "stripe/stripe-php": "^9.9"
+        "stripe/stripe-php": "^9.9",
+      "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

@@ -4,4 +4,5 @@
 <b>Ticket Code:</b> {{$detail['ticket_code']}} <br>
 <b>Day Start:</b> {{$detail['day_start']}} <br>
 <b>Day End:</b> {{$detail['day_end']}} <br>
+{{$detail['qrCode']}}
 </html>

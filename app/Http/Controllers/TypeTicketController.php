@@ -31,7 +31,7 @@ class TypeTicketController extends Controller
         return view('admin.type_tickets.edit_type_ticket')->with('ticket_detail',$ticket_detail);
     }
     public function all_type_ticket(){
-        $all_type_ticket = TypeTicket::status()->paginate(5);
+        $all_type_ticket = TypeTicket::status()->orderby('id','desc')->paginate(5);
         return view('admin.type_tickets.all_type_ticket')->with('all_type_ticket',$all_type_ticket);
     }
     public function delete_type_ticket($id){

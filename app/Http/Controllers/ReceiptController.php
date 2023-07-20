@@ -2,19 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\SendMail;
-use App\Mail\MailSuccess;
 use App\Models\Receipt;
-use App\Models\TicKet;
 use App\Models\TypeTicket;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Mailer;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-use Laravel\Cashier\Cashier;
+
 use Illuminate\Support\Facades\Redirect;
-use RealRashid\SweetAlert\Facades\Alert;
-use MongoDB\Driver\Session;
+
 
 class ReceiptController extends Controller
 {
@@ -33,5 +26,17 @@ class ReceiptController extends Controller
     public function create_receipt($id){
         $type_ticket = TypeTicket::where('id',$id)->first();
         return view('pages.payments.create_receipt')->with('type_ticket',$type_ticket);
+    }
+
+    public function save_receipt(Request $request)
+    {
+        $new_receipt = new Receipt();
+        $new_receipt->fill($request->all());
+        $new_receipt->save();
+        $receipt_id = Receipt::latest('id')->first()->id;
+
+        $amount = $request->amount;
+
+        return Redirect::to('/check-out/' . $receipt_id)->with(['message'=> 'Receipt Add Successfully','receipt_id'=>$receipt_id,'amount'=>$amount]);
     }
 }

@@ -20,6 +20,10 @@ class TicKet extends Model
         return $this->belongsTo(TicKet::class,'payment_id');
     }
 
+    public function scopeLastItem($query){
+
+    }
+
     public function scopeValid($query){
         return $query->where('ticket_status',1)->get();
     }

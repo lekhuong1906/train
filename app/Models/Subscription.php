@@ -23,4 +23,9 @@ class Subscription extends Model
     public function ticket(){
         return $this->hasOne(TicKet::class,'payment_id');
     }
+
+    public function scopeLastItem(){
+        $item = Subscription::latest('id')->first();
+        return $item->id;
+    }
 }

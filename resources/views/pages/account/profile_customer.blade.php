@@ -75,7 +75,7 @@
             </div>
             <div class="row justify-content-md-center">
                 <div class="item col-md-12">
-                    <form id="profile-form" name="gs" method="post" role="search" action="#">
+                    <form id="profile-form" name="gs" method="post" role="search" action="{{url('/update-profile-customer/'.$info->id)}}">
                         @csrf
 
                         <div class="row">
@@ -108,7 +108,7 @@
                                 </fieldset>
                             </div><div class="col-md-12">
                                 <label for="name" class="form-label">Your Address</label>
-                                <input type="text"  value="{{$info->address}}">
+                                <input type="text" name="address"  value="{{$info->address}}">
                             </div>
 
                             <hr/>

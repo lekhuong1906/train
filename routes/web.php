@@ -1,6 +1,11 @@
 <?php
 
+use App\Mail\MailSuccess;
+use App\Models\TicKet;
+use App\Models\TypeTicket;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
@@ -10,6 +15,9 @@ use App\Http\Controllers\MapController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\DashboardController;
+
+use App\Http\Controllers\CheckedController;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,12 +92,13 @@ Route::group(['middleware'=>['customer-login']],function (){
 
     //payments
     Route::get('/create-receipt/{id}',[ReceiptController::class,'create_receipt']);
-    Route::post('/save-receipt',[PaymentController::class,'save_receipt']);
-    Route::get('/check-out/{id}',[PaymentController::class,'checkout']);
-    Route::post('/payment',[PaymentController::class,'payment']);
+    Route::post('/save-receipt',[ReceiptController::class,'save_receipt']);
+    Route::get('/check-out/{id}',[PaymentController::class,'checkout'])->name('check-out');
+    Route::post('/payment',[PaymentController::class,'payment'])->name('payment');
 
     //account
     Route::get('/profile-customer/{id}',[HomeController::class,'profile_customer']);
+    Route::post('/update-profile-customer/{id}',[HomeController::class,'update_profile_customer']);
     Route::get('/customer-log-out',[HomeController::class,'log_out']);
 
 
@@ -102,14 +111,10 @@ Route::group(['middleware'=>['customer-login']],function (){
 
 });
 
-
-
+//Checked ticket
+Route::get('/checked-ticket',[CheckedController::class,'checked_ticket'])->name('checked_ticket');
+Route::post('/submit-checked',[CheckedController::class,'submit_checked_ticket']);
 
 Route::get('/test',function (){
-    $now = Carbon::now()->format('dmYhis');
-    dd( 'TK' . $now);
-
 
 });
-
-
