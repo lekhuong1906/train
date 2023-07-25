@@ -2,20 +2,20 @@
 @section('content')
 
     <div class="row">
-        <div class="col-lg col-md-6 col-sm-6">
+        <div class="col-lg-2 col-md-6 col-sm-6">
             <form action="#" method="get" id="form-dashboard">
                 <div class="form-group">
                     <label for="date_filter">Date</label>
                     <select class="form-control" name="date_filter">
                         <option value="1">ToDay</option>
-                        <option value="0">This Month</option>
+                        <option value="2">This Month</option>
                         <option value="-1">This Year</option>
                     </select>
                 </div>
                 <button class="btn btn-default " type="submit">Submit</button>
             </form>
         </div>
-        <div class="col-lg col-md-6 col-sm-6">
+        <div class="col-lg-4 col-md-6 col-sm-6">
             <div class="card card-stats">
                 <div class="card-body ">
                     <div class="row">
@@ -54,7 +54,7 @@
                         <div class="col-7 col-md-8">
                             <div class="numbers">
                                 <p class="card-category">Order Completed</p>
-                                <p class="card-title">{{$summary->total_order_completed}}
+                                <p class="card-title">{{number_format($summary->total_order_completed)}}
                                 <p>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                         <div class="col-7 col-md-8">
                             <div class="numbers">
                                 <p class="card-category">Ticket Sold</p>
-                                <p class="card-title">{{$summary->total_ticket_sold}}
+                                <p class="card-title">{{number_format($summary->total_ticket_sold)}}
                                 <p>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md">
+        <div class="col-lg">
             <div class="card card-chart">
                 <div class="card-header">
                     <h5 class="card-title">REVENUE</h5>

@@ -44,6 +44,53 @@
 
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        @if (!empty($errors->all()))
+        @foreach ($errors->all() as $error)
+        toastr.error("{{$error}}")
+        @endforeach
+            @endif
+
+            @if(Session::has('message'))
+            toastr.options =
+            {
+                "closeButton": true,
+                "progressBar": true,
+            }
+        toastr.success("{{ session('message') }}");
+        @endif
+
+            @if(Session::has('error'))
+            toastr.options =
+            {
+                "closeButton": true,
+                "progressBar": true
+            }
+        toastr.error("{{ session('error') }}");
+        @endif
+
+            @if(Session::has('info'))
+            toastr.options =
+            {
+                "closeButton": true,
+                "progressBar": true
+            }
+        toastr.info("{{ session('info') }}");
+        @endif
+
+            @if(Session::has('warning'))
+            toastr.options =
+            {
+                "closeButton": true,
+                "progressBar": true
+            }
+        toastr.warning("{{ session('warning') }}");
+        @endif
+    })
+</script>
+
 <!--   Core JS Files   -->
 <script src="{{asset('public/backend/assets/js/core/jquery.min.js')}}"></script>
 <script src="{{asset('public/backend/assets/js/core/popper.min.js')}}"></script>
@@ -56,17 +103,9 @@
 <!--  Notifications Plugin    -->
 <script src="{{asset('public/backend/assets/js/plugins/bootstrap-notify.js')}}"></script>
 <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="{{asset('public/backend/assets/js/paper-dashboard.min.js?v=2.0.1')}}" type="text/javascript"></script>
-<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-<script src="{{asset('public/backend/assets/demo/demo.js')}}"></script>
+<script src="public/backend/assets/js/paper-dashboard.min.js" type="text/javascript"></script>
 
-<script>
-    $(document).ready(function() {
-        // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
-        demo.initChartsPages();
-    });
-</script>
-@include('session_notify.get_notify')
+{{--<script src="{{asset('public/backend/assets/js/paper-dashboard.min.js?v=2.0.1')}}" type="text/javascript"></script>--}}
 </body>
 
 </html>

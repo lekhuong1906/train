@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserFormRequest;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\UserRequest;
 use App\Mail\MailPasswordReset;
 use App\Models\PasswordReset;
 use App\Models\User;
@@ -17,7 +18,7 @@ class AdminController extends Controller
     public function admin_login(){
         return view('admin.login.sign_in');
     }
-    public function sign_in(UserFormRequest $request){
+    public function sign_in(LoginRequest $request){
         $user = User::where('email',$request->email)->where('password',md5($request->password))->where('level_account',1)->first();
         if ($user !== null){
             Auth::login($user, true);
@@ -29,7 +30,7 @@ class AdminController extends Controller
     public function new_user(){
         return view('admin.users.new_user');
     }
-    public function add_user(Request $request){
+    public function add_user(UserRequest $request){
         $profile = new User();
         $profile->fill($request->all());
         $profile->save();
@@ -44,7 +45,7 @@ class AdminController extends Controller
         $user = User::find($id);
         return view('admin.users.profile')->with('user',$user);
     }
-    public function update_profile($id, Request $request){
+    public function update_profile($id, UserRequest $request){
         $profile = User::find($id);
         $profile->fill($request->all());
         $profile->save();

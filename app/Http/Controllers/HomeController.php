@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserFormRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\PasswordReset;
 use App\Models\TypeTicket;
 use App\Models\User;
@@ -24,7 +24,7 @@ class HomeController extends Controller
     }
 
 
-    public function sign_in(UserFormRequest $request){
+    public function sign_in(UserRequest $request){
         $customer = User::where('email',$request->email)->where('password',md5($request->password))->where('level_account',0)->first();
         if ($customer !== null){
             Auth::login($customer);
@@ -39,7 +39,7 @@ class HomeController extends Controller
     public function sign_up(){
         return view('pages.login.sign_up');
     }
-    public function save_account(UserFormRequest $request){
+    public function save_account(UserRequest $request){
         $new_account = new User();
         $new_account->fill($request->all());
         $new_account['level_account']=0;

@@ -15,6 +15,6 @@ class TicketController extends Controller
         return view('pages.account.all_ticket')->with('all_ticket',$all_ticket);
     }
     public function qrCode($ticket_code){
-        $this->service->qrCode($ticket_code);
+        return $this->service->qrCode($ticket_code);
     }
 }

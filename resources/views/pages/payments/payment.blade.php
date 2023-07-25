@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <form id="reservation-form" name="gs" method="post" role="search" action="{{url('/payment/')}}">
+                    <form id="reservation-form" name="gs" method="post" role="search" action="{{route('payment')}}">
                         @csrf
                         <div class="row">
                             <div class="col-lg-12">

@@ -20,7 +20,7 @@ class ReportSummarySeeder extends Seeder
         for ($i = 0; $i < 210; $i++) {
             if ($i < 90) {
                 $posts = [
-                    'revenue' => random_int(80000, 500000),
+                    'revenue' => random_int(500000, 2000000),
                     'order_completed' => random_int(10, 30),
                     'ticket_sold' => random_int(10, 30),
                     'created_at' => $time->addDay(),
@@ -28,7 +28,7 @@ class ReportSummarySeeder extends Seeder
             }
             if ($i > 90 && $i < 180) {
                 $posts = [
-                    'revenue' => random_int(500000, 1000000),
+                    'revenue' => random_int(800000, 3000000),
                     'order_completed' => random_int(10, 30),
                     'ticket_sold' => random_int(30, 40),
                     'created_at' => $time->addDay(),
@@ -36,7 +36,7 @@ class ReportSummarySeeder extends Seeder
             }
             if ($i>180){
                 $posts = [
-                    'revenue' => random_int(1000000, 1500000),
+                    'revenue' => random_int(2000000, 5000000),
                     'order_completed' => random_int(40, 50),
                     'ticket_sold' => random_int(10, 30),
                     'created_at' => $time->addDay(),

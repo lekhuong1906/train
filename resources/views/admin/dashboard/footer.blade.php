@@ -1,5 +1,5 @@
 <section>
-    <footer class="footer footer-black  footer-white ">
+    <footer class="footer footer-black footer-white mt-auto py-3 ">
         <div class="container-fluid">
             <div class="row">
                 <div class="credits ml-auto">

@@ -34,7 +34,7 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-body" id="modal_body">
+                <div class="modal-body text-center  " id="modal_body">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary align-items-center" data-bs-dismiss="modal">Close</button>
@@ -52,7 +52,9 @@
                     url: "/qrcode/" + ticket_code,
                     type: "GET",
                     success: function (data) {
-                        $("#modal_body").html('<img src="' + data + '">');
+                        console.log(data)
+                        /*$("#modal_body").html('<img src="' + data + '">');*/
+                        $("#modal_body").html(data);
                         $("#exampleModal").modal("show");
                     },
                     error: function (xhr, status, error) {

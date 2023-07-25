@@ -23,7 +23,9 @@ class TypeTicket extends Model
 
     public function scopeStatus($query){
         if (($status = request()->type_status)!==null)
-            $query = $query->where('type_status',$status);
+            if($status == -1)
+                $query = $query->orderby('id','desc');
+            else $query = $query->where('type_status',$status)->orderby('id','desc');
         return $query;
     }
 

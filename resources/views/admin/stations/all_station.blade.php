@@ -4,11 +4,12 @@
         <div class="row-cols-auto container-fluid">
             <form class="form-inline" method="get">
                 <div class="form-group row">
-                    <label for="type_status" class="col-sm col-form-label">Station Status</label>
+                    <label for="station_status" class="col-sm col-form-label">Station Status</label>
                     <div class="col-sm-4">
-                        <select class="form-control" name="receipt_status">
+                        <select class="form-control" name="station_status">
                             <option value="1">Show</option>
                             <option value="0">Hidden</option>
+                            <option value="-1">All</option>
                         </select>
                     </div>
                     <button class="btn btn-default sm-2" type="submit">Submit</button>

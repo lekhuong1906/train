@@ -8,6 +8,7 @@
                     <select class="form-control" name="type_status">
                         <option value="1">Active</option>
                         <option value="0">UnActive</option>
+                        <option value="-1">All</option>
                     </select>
                 </div>
                 <button class="btn btn-default sm-2" type="submit">Submit</button>

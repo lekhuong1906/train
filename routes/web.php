@@ -11,7 +11,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TypeTicketController;
 use App\Http\Controllers\ReceiptController;
-use App\Http\Controllers\MapController;
+use App\Http\Controllers\StationController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\DashboardController;
@@ -57,13 +57,13 @@ Route::group(['middleware'=>['auth']],function (){
     Route::get('/receipt-detail/{id}',[ReceiptController::class,'receipt_detail']);
 
     //station
-    Route::get('/add-station',[MapController::class,'add_station']);
-    Route::get('/maps',[MapController::class,'maps']);
-    Route::get('/all-station',[MapController::class,'all_station'])->name('all-station');
-    Route::get('/edit-station/{id}',[MapController::class,'edit_station']);
-    Route::post('/update-station/{id}',[MapController::class,'update_station']);
-    Route::get('/delete-station/{id}',[MapController::class,'delete_station']);
-    Route::post('/save-station',[MapController::class,'save_station']);
+    Route::get('/add-station',[StationController::class,'add_station']);
+    Route::get('/maps',[StationController::class,'maps']);
+    Route::get('/all-station',[StationController::class,'all_station'])->name('all-station');
+    Route::get('/edit-station/{id}',[StationController::class,'edit_station']);
+    Route::post('/update-station/{id}',[StationController::class,'update_station']);
+    Route::get('/delete-station/{id}',[StationController::class,'delete_station']);
+    Route::post('/save-station',[StationController::class,'save_station']);
 
     //account user
     Route::get('/new-user',[AdminController::class,'new_user']);
@@ -80,7 +80,7 @@ Route::group(['middleware'=>['auth']],function (){
 
 
 //pages
-Route::get('/',[HomeController::class,'home'])->name('/');
+Route::get('/',[HomeController::class,'home'])->name('home');
 
 //customer-login
 Route::get('/login',[HomeController::class,'login'])->name('customer-login');
@@ -107,7 +107,7 @@ Route::group(['middleware'=>['customer-login']],function (){
     Route::get('/qrcode/{ticket_code}',[TicketController::class,'qrcode']);
 
     //maps
-    Route::get('/maps-page',[MapController::class,'maps_page']);
+    Route::get('/maps-page',[StationController::class,'maps_page']);
 
 });
 
@@ -115,6 +115,3 @@ Route::group(['middleware'=>['customer-login']],function (){
 Route::get('/checked-ticket',[CheckedController::class,'checked_ticket'])->name('checked_ticket');
 Route::post('/submit-checked',[CheckedController::class,'submit_checked_ticket']);
 
-Route::get('/test',function (){
-
-});

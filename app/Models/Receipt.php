@@ -34,9 +34,12 @@ class Receipt extends Model
         $data = $query->find($receipt_id);
         return $data->receipt_total;
     }
-    public function scopeLastItem(){
-        $item = Receipt::orderby('id','desc')->first();
-        return $item->id;
+    public function scopeStatus($query){
+        if (($status = request()->type_status)!==null)
+            if($status == -1)
+                $query = $query->orderby('id','desc');
+            else $query = $query->where('type_status',$status)->orderby('id','desc');
+        return $query;
     }
 
 }

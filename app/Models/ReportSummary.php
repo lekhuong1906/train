@@ -17,21 +17,20 @@ class ReportSummary extends Model
         'ticket_sold',
     ];
 
-    public function scopeSummary($query, $request)
+    public function scopeSummary($query)
     {
         $query = $query->selectRaw('SUM(revenue) as total_revenue, SUM(order_completed) as total_order_completed, SUM(ticket_sold) as total_ticket_sold');
-
-        if ($request) {
-            $time = Carbon::now();
-            if ($request == 1) {
-                $query->whereDate('created_at', $time);
-            } elseif ($request == 0)
-                $query->whereMonth('created_at', $time);
+        $now = Carbon::now();
+        if ($date_filter = request()->date_filter) {
+            if ($date_filter == 1)
+                $query->whereDate('created_at', $now);
+            else if ($date_filter == 2)
+                $query->whereMonth('created_at', $now->month);
             else
-                $query->whereYear('created_at', $time);
+                $query->whereYear('created_at', $now);
         }
 
-        return $query->first();
+        return $query;
     }
 
 }

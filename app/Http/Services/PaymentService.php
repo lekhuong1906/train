@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Services;
 
 
@@ -11,6 +10,7 @@ use App\Models\TicKet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 use Masterminds\HTML5\Exception;
 use Stripe\Exception\ApiErrorException;
 use Stripe\Exception\CardException;
@@ -24,7 +24,7 @@ class PaymentService extends TicketService
         $this->stripe = new StripeClient(env('STRIPE_SECRET'));
     }
 
-    public function payment($request){
+    /*public function payments($request){
 
         $receipt_id = $request->receiptId;
         $amount = Receipt::getAmount($receipt_id);
@@ -47,15 +47,14 @@ class PaymentService extends TicketService
             $this->create_ticket($payment_id);
 
             $this->send_mail();
-
-            return redirect()->route('/')->with('message', 'Payment completed');
+            return Redirect::to(route('home'))->with('message', 'Payment completed');
 
         }
 
         return redirect()->route('/')->with('error', 'Payment failed');
 
-    }
-    private function createToken(Request $request)
+    }*/
+    public function createToken(Request $request)
     {
         $token = null;
         try {
@@ -76,7 +75,7 @@ class PaymentService extends TicketService
         }
         return $token;
     }
-    private function createCharge($tokenId, $amount)
+    public function createCharge($tokenId, $amount)
     {
         $charge = null;
         try {

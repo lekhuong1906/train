@@ -8,6 +8,7 @@
                     <select class="form-control" name="receipt_status">
                         <option value="1">Valid</option>
                         <option value="0">Invalid</option>
+                        <option value="-1">All</option>
                     </select>
                 </div>
                 <button class="btn btn-default sm-2" type="submit">Submit</button>
